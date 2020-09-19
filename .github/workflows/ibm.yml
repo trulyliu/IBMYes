@@ -37,7 +37,10 @@ jobs:
     - name: Restart IBM Cloud
       env:
         IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
+        RESOURCE_ID: ${{ secrets.RESOURCE_ID }}
+        REGION_NUM: ${{ secrets.REGION_NUM }}
       run: |
+        ./IBM_Cloud_CLI/ibmcloud target -g "$RESOURCE_ID" -r us-south --cf-api https://api.us-south.cf.cloud.ibm.com
         ./IBM_Cloud_CLI/ibmcloud cf restart "$IBM_APP_NAME"
 
 
