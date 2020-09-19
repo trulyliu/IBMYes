@@ -32,9 +32,7 @@ jobs:
         RESOURCE_ID: ${{ secrets.RESOURCE_ID }}
         REGION_NUM: ${{ secrets.REGION_NUM }}
       run: |
-        ./IBM_Cloud_CLI/ibmcloud target -g "$RESOURCE_ID" <<EOF
-        $REGION_NUM
-        EOF
+        ./IBM_Cloud_CLI/ibmcloud target -g "$RESOURCE_ID" -a https://api.us-south.cf.cloud.ibm.com
         ./IBM_Cloud_CLI/ibmcloud target --cf
         ./IBM_Cloud_CLI/ibmcloud cf install -f -v 6.15.0
     - name: Restart IBM Cloud
