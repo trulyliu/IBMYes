@@ -39,8 +39,10 @@ jobs:
         IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
         RESOURCE_ID: ${{ secrets.RESOURCE_ID }}
         REGION_NUM: ${{ secrets.REGION_NUM }}
+        IBM_ORG: ${{ secrets.IBM_ORG }}
+        IBM_SPACE: ${{ secrets.IBM_SPACE }}  
       run: |
-        ./IBM_Cloud_CLI/ibmcloud target -cf -o trulyliu@gmail.com -s dev
+        ./IBM_Cloud_CLI/ibmcloud target -cf -o "$IBM_ORG" -s "$IBM_SPACE"
         ./IBM_Cloud_CLI/ibmcloud cf restart "$IBM_APP_NAME"
 
 
